@@ -20,5 +20,6 @@ namespace NewAuction.Models
         public Boolean IsActive { get; set; }
         
         public virtual ApplicationUser User { get; set; }
+        public virtual ICollection<Bet> Bet { get; set; }
     }
 }
