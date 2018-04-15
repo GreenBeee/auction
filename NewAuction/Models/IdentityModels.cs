@@ -24,7 +24,8 @@ namespace NewAuction.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
-        public System.Data.Entity.DbSet<Product> Product { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Bet> Bet{ get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

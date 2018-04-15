@@ -96,3 +96,4 @@ c:\users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAucti
 c:\users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAuction\obj\Debug\NewAuction.pdb
 C:\Users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAuction\obj\Debug\NewAuction.csproj.GenerateResource.Cache
 C:\Users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAuction\obj\Debug\NewAuction.Migrations.Products.resources
+C:\Users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAuction\obj\Debug\NewAuction.Migrations.Newmigration.resources

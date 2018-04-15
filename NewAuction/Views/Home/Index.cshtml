@@ -22,7 +22,7 @@
                 <td>@product.Name</td>
                 <td>@product.CurrentPrice</td>
                 <td>
-                    @Html.ActionLink("Go!", "Product", new { @productId = product.ID }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Go!", "Index", "Product", new { @productId = product.ID }, new { @class = "btn btn-primary" })
                 </td>
             </tr>
         }

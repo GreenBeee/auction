@@ -1,0 +1,21 @@
+﻿@model NewAuction.Models.Product
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <h2 style="align-content:center">@Model.Name</h2>
+    <p style="align-content:center">@Model.Description</p>
+    <img style="align-content:center" src="@Model.Image" alt="no image" />
+    <h1>Current price: @Model.SoldPrice</h1>
+    <p class="text-danger">@ViewBag.Error</p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form method="post">
+            <input type="number" name="bet" />
+            <input type="number" name="productId" style="display:none" value="@Model.ID"/>
+            <input type="submit" />
+        </form>
+    }
+</div>
+

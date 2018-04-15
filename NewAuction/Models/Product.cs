@@ -10,6 +10,7 @@ namespace NewAuction.Models
     public class Product
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Int32 ID { get; set; }
         public String Name { get; set; }
         public String Image { get; set; }
