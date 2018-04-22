@@ -19,9 +19,12 @@ namespace NewAuction.Controllers
                 if (DateTime.Now.CompareTo(current.StartAuction.AddHours(1)) == 1)
                 {
                     current.IsActive = false;
-                    current.Buyer = applicationContext.Bet.Last(x => x.Product.ID == current.ID).User;
+                    Bet lastBetPerProduct = current.Bet.Last();
+                    if (lastBetPerProduct != null) {
+                        current.Buyer = lastBetPerProduct.User;
+                    }
                 }
-                if (current.IsActive)
+                if (current.IsActive && current.Buyer == null)
                 {
                     ProductViewModel product = new ProductViewModel();
                     product.Description = current.Description;

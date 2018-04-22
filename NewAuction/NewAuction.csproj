@@ -191,6 +191,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyProductsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +211,10 @@
     <Compile Include="Migrations\201804220938562_Date-Product.cs" />
     <Compile Include="Migrations\201804220938562_Date-Product.Designer.cs">
       <DependentUpon>201804220938562_Date-Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804221040322_Seller.cs" />
+    <Compile Include="Migrations\201804221040322_Seller.Designer.cs">
+      <DependentUpon>201804221040322_Seller.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -277,6 +282,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\MyProducts\Create.cshtml" />
+    <Content Include="Views\MyProducts\Delete.cshtml" />
+    <Content Include="Views\MyProducts\Details.cshtml" />
+    <Content Include="Views\MyProducts\Edit.cshtml" />
+    <Content Include="Views\MyProducts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -308,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804220938562_Date-Product.resx">
       <DependentUpon>201804220938562_Date-Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804221040322_Seller.resx">
+      <DependentUpon>201804221040322_Seller.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

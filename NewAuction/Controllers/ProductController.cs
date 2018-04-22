@@ -37,7 +37,11 @@ namespace NewAuction.Controllers
             if(DateTime.Now.CompareTo(currentProduct.StartAuction.AddHours(1)) == 1)
             {
                 currentProduct.IsActive = false;
-                currentProduct.Buyer = applicationContext.Bet.Last(x => x.Product.ID == productId).User;
+                Bet lastBetPerProduct = currentProduct.Bet.Last(x => x.Product.ID == currentProduct.ID);
+                if (lastBetPerProduct != null)
+                {
+                    currentProduct.Buyer = lastBetPerProduct.User;
+                }
                 applicationContext.SaveChanges();
             }
             if (currentProduct != null && currentProduct.IsActive)
@@ -62,7 +66,11 @@ namespace NewAuction.Controllers
             if (DateTime.Now.CompareTo(product.StartAuction.AddHours(1)) == 1)
             {
                 product.IsActive = false;
-                product.Buyer = applicationContext.Bet.Last(x => x.Product.ID == productId).User;
+                Bet lastBetPerProduct = product.Bet.Last(x => x.Product.ID == product.ID);
+                if (lastBetPerProduct != null)
+                {
+                    product.Buyer = lastBetPerProduct.User;
+                }
                 applicationContext.SaveChanges();
                 return View(product);
             }

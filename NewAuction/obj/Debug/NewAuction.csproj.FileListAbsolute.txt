@@ -99,3 +99,4 @@ C:\Users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAucti
 C:\Users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAuction\obj\Debug\NewAuction.Migrations.Newmigration.resources
 C:\Users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAuction\obj\Debug\NewAuction.Migrations.BuyerForProduct.resources
 C:\Users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAuction\obj\Debug\NewAuction.Migrations.DateProduct.resources
+C:\Users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAuction\obj\Debug\NewAuction.Migrations.Seller.resources
