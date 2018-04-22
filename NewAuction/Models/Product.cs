@@ -18,8 +18,10 @@ namespace NewAuction.Models
         public Double StartPrice { get; set; }
         public Double SoldPrice { get; set; }
         public Boolean IsActive { get; set; }
+        public DateTime StartAuction { get; set; }
         
         public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser Buyer { get; set; }
         public virtual ICollection<Bet> Bet { get; set; }
     }
 }

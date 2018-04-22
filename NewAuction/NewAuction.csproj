@@ -203,6 +203,14 @@
     <Compile Include="Migrations\201804151517205_New migration.Designer.cs">
       <DependentUpon>201804151517205_New migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804220930264_BuyerForProduct.cs" />
+    <Compile Include="Migrations\201804220930264_BuyerForProduct.Designer.cs">
+      <DependentUpon>201804220930264_BuyerForProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804220938562_Date-Product.cs" />
+    <Compile Include="Migrations\201804220938562_Date-Product.Designer.cs">
+      <DependentUpon>201804220938562_Date-Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bet.cs" />
@@ -294,6 +302,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804151517205_New migration.resx">
       <DependentUpon>201804151517205_New migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804220930264_BuyerForProduct.resx">
+      <DependentUpon>201804220930264_BuyerForProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804220938562_Date-Product.resx">
+      <DependentUpon>201804220938562_Date-Product.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

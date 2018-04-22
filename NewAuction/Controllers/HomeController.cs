@@ -16,6 +16,11 @@ namespace NewAuction.Controllers
             var model = new List<ProductViewModel>();
             foreach (var current in applicationContext.Product)
             {
+                if (DateTime.Now.CompareTo(current.StartAuction.AddHours(1)) == 1)
+                {
+                    current.IsActive = false;
+                    current.Buyer = applicationContext.Bet.Last(x => x.Product.ID == current.ID).User;
+                }
                 if (current.IsActive)
                 {
                     ProductViewModel product = new ProductViewModel();
@@ -23,12 +28,14 @@ namespace NewAuction.Controllers
                     product.ID = current.ID;
                     product.ImageUrl = current.Image;
                     product.Name = current.Name;
+                    product.StartTime = current.StartAuction;
                     product.CurrentPrice = current.SoldPrice;
                     product.StartPrice = current.StartPrice;
 
                     model.Add(product);
                 }
             }
+            applicationContext.SaveChanges();
             return View(model);
         }
     }

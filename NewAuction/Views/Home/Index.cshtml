@@ -3,8 +3,11 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+<head>
+    <meta http-equiv="refresh" content="15">
+</head>
 <div class="row">
+    <p class="text-info">Page will reload in 20 sec</p>
     <h2>Active auctions</h2>
 
     <table class="table-hover" style="width:100%">
@@ -12,6 +15,7 @@
             <th>Image</th>
             <th>Name</th>
             <th>Current price</th>
+            <th>Ends</th>
         </tr>
         @foreach (var product in Model)
         {
@@ -21,6 +25,9 @@
                 </td>
                 <td>@product.Name</td>
                 <td>@product.CurrentPrice</td>
+                <td>
+                    @product.StartTime.AddHours(1).ToShortTimeString()
+                </td>
                 <td>
                     @Html.ActionLink("Go!", "Index", "Product", new { @productId = product.ID }, new { @class = "btn btn-primary" })
                 </td>

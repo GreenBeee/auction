@@ -13,5 +13,6 @@ namespace NewAuction.Models
         public String Description { get; set; }
         public Double StartPrice { get; set; }
         public Double CurrentPrice { get; set; }
+        public DateTime StartTime { get; set; }
     }
 }

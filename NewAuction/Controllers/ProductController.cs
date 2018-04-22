@@ -34,7 +34,13 @@ namespace NewAuction.Controllers
         public ActionResult Index(Int32 productId)
         {
             Product currentProduct = applicationContext.Product.First(x => x.ID == productId && x.IsActive == true);
-            if (currentProduct != null)
+            if(DateTime.Now.CompareTo(currentProduct.StartAuction.AddHours(1)) == 1)
+            {
+                currentProduct.IsActive = false;
+                currentProduct.Buyer = applicationContext.Bet.Last(x => x.Product.ID == productId).User;
+                applicationContext.SaveChanges();
+            }
+            if (currentProduct != null && currentProduct.IsActive)
             {
                 return View(currentProduct);
             }
@@ -51,6 +57,13 @@ namespace NewAuction.Controllers
             if (bet <= product.SoldPrice)
             {
                 ViewBag.Error = "Bet must be higher than price";
+                return View(product);
+            }
+            if (DateTime.Now.CompareTo(product.StartAuction.AddHours(1)) == 1)
+            {
+                product.IsActive = false;
+                product.Buyer = applicationContext.Bet.Last(x => x.Product.ID == productId).User;
+                applicationContext.SaveChanges();
                 return View(product);
             }
             product.SoldPrice = bet;
