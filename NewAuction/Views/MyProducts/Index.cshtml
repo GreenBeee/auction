@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>My products</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -63,6 +63,12 @@
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
+        @if (item.Buyer != null)
+        {
+            <td style="background-color:red">
+                Sold!
+            </td>
+        }
     </tr>
 }
 

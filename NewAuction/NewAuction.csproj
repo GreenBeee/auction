@@ -189,6 +189,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BoughtProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyProductsController.cs" />
@@ -215,6 +216,10 @@
     <Compile Include="Migrations\201804221040322_Seller.cs" />
     <Compile Include="Migrations\201804221040322_Seller.Designer.cs">
       <DependentUpon>201804221040322_Seller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805061101072_BoughtProducts.cs" />
+    <Compile Include="Migrations\201805061101072_BoughtProducts.Designer.cs">
+      <DependentUpon>201805061101072_BoughtProducts.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -287,6 +292,8 @@
     <Content Include="Views\MyProducts\Details.cshtml" />
     <Content Include="Views\MyProducts\Edit.cshtml" />
     <Content Include="Views\MyProducts\Index.cshtml" />
+    <Content Include="Views\BoughtProducts\Details.cshtml" />
+    <Content Include="Views\BoughtProducts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -321,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804221040322_Seller.resx">
       <DependentUpon>201804221040322_Seller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805061101072_BoughtProducts.resx">
+      <DependentUpon>201805061101072_BoughtProducts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -33,9 +33,6 @@ namespace NewAuction.Controllers
         // GET: MyProducts
         public ActionResult Index()
         {
-            ICollection<Product> list = UserManager.FindById(User.Identity.GetUserId()).Products;
-            Console.WriteLine(list);
-            Console.WriteLine(UserManager.FindById(User.Identity.GetUserId()).UserName);
             return View(UserManager.FindById(User.Identity.GetUserId()).Products);
         }
 
