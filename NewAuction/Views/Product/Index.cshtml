@@ -18,7 +18,7 @@
     <h3 style="float:right">Ends in @Model.StartAuction.AddHours(1).ToShortTimeString()</h3>
     <p>@Model.Description</p>
     <div style="margin:0 auto">
-        <img style="height:300px" src ="@Model.Image" alt="no image" />
+        <img style="height:300px" src="@Model.Image" alt="no image" />
     </div>
     <h1>Current price: @Model.SoldPrice</h1>
     <p class="text-danger">@ViewBag.Error</p>
@@ -26,15 +26,27 @@
     {
         <form method="post">
             <input placeholder="Make your bet" type="number" name="bet" />
-            <input type="number" name="productId" style="display:none" value="@Model.ID"/>
+            <input type="number" name="productId" style="display:none" value="@Model.ID" />
             <input type="submit" />
         </form>
     }
-    @if(DateTime.Now.CompareTo(Model.StartAuction.AddHours(1)) == 1)
+    
+    @model NewAuction.Models.Product
+    @{
+        ViewBag.Title = "Index";
+
+        string str = "";
+        foreach (var bet in Model.Bet)
+        {
+            str += bet.User.Email.ToString() + " made a bet " + bet.Price;
+            str += "\n\r";
+        }
+    }
+    @if (DateTime.Now.CompareTo(Model.StartAuction.AddHours(1)) == 1)
     {
         <p class="text-danger">Auction have already ended</p>
     }
-        <textarea style="width:100%; height:300px" disabled>
+    <textarea style="width:100%; height:300px" disabled>
             @str
         </textarea>
 </div>

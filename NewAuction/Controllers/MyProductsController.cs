@@ -111,6 +111,7 @@ namespace NewAuction.Controllers
         }
 
         // GET: MyProducts/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -124,8 +125,8 @@ namespace NewAuction.Controllers
             }
             return View(product);
         }
-
-        // POST: MyProducts/Delete/5
+        
+        // POST: MyProducts/Delete/5       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

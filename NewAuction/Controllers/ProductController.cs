@@ -79,7 +79,9 @@ namespace NewAuction.Controllers
             newBet.Price = bet;
             newBet.Product = product;
             newBet.TimeStamp = DateTime.Now.Millisecond;
-            newBet.User = applicationContext.Users.First(x => x.UserName == HttpContext.User.Identity.Name);
+
+            String id = User.Identity.GetUserId();
+            newBet.User = applicationContext.Users.First(x => x.Id == id);
 
             applicationContext.Bet.Add(newBet);
             applicationContext.SaveChanges();

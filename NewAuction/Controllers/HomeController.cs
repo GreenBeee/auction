@@ -10,7 +10,7 @@ namespace NewAuction.Controllers
     public class HomeController : Controller
     {
         public ApplicationDbContext applicationContext = new ApplicationDbContext();
-
+       
         public ActionResult Index()
         {
             var model = new List<ProductViewModel>();
@@ -19,9 +19,17 @@ namespace NewAuction.Controllers
                 if (DateTime.Now.CompareTo(current.StartAuction.AddHours(1)) == 1)
                 {
                     current.IsActive = false;
-                    Bet lastBetPerProduct = current.Bet.Last();
-                    if (lastBetPerProduct != null) {
-                        current.Buyer = lastBetPerProduct.User;
+                    if (current.Bet.Count == 0)
+                    {
+                        current.Buyer = current.User;
+                    }
+                    else
+                    {
+                        Bet lastBetPerProduct = current.Bet.Last();
+                        if (lastBetPerProduct != null)
+                        {
+                            current.Buyer = lastBetPerProduct.User;
+                        }
                     }
                 }
                 if (current.IsActive && current.Buyer == null)
