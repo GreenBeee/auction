@@ -302,7 +302,8 @@
     <Content Include="Views\BoughtProducts\Details.cshtml" />
     <Content Include="Views\BoughtProducts\Index.cshtml" />
     <Content Include="Views\Ban\Index.cshtml" />
-    <Content Include="Views\Ban\Delete.cshtml" />
+    <Content Include="Views\Ban\Ban.cshtml" />
+    <Content Include="Views\Ban\Disban.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

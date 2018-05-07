@@ -29,31 +29,46 @@ namespace NewAuction.Controllers
                 _userManager = value;
             }
         }
-
-        // GET: MyProducts
+        
         public ActionResult Index()
         {
             return View(UserManager.Users);
         }
-
-        // GET: MyProducts/Delete/5
-        public ActionResult Delete(string id)
-        {  
+        
+        public ActionResult Ban(string id)
+        {
             ApplicationUser user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
+            if (user.IsBanned == true)
+                return RedirectToAction("Index");
+
+            return View(user);
+        }
+       
+        [HttpPost, ActionName("Ban")]
+        [ValidateAntiForgeryToken]
+        public ActionResult BanConfirmed(string id)
+        {
+            ApplicationUser user = db.Users.Find(id);
+            user.IsBanned = true;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Disban(string id)
+        {
+            ApplicationUser user = db.Users.Find(id);
+            if (user.IsBanned == false)
+                return RedirectToAction("Index");
+
             return View(user);
         }
 
-        // POST: MyProducts/Delete/5       
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Disban")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DisbanConfirmed(string id)
         {
             ApplicationUser user = db.Users.Find(id);
-            db.Users.Remove(user);
+            user.IsBanned = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
