@@ -5,7 +5,7 @@
     string str = "";
     foreach(var bet in Model.Bet)
     {
-        str += @Model.User.UserName.ToString() + " made a bet " + bet.Price;
+        str += bet.User.Email.ToString() + " made a bet " + bet.Price;
         str += "\n\r";
     }
 }
