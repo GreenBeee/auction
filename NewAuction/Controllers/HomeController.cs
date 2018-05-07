@@ -10,7 +10,7 @@ namespace NewAuction.Controllers
     public class HomeController : Controller
     {
         public ApplicationDbContext applicationContext = new ApplicationDbContext();
-
+       
         public ActionResult Index()
         {
             var model = new List<ProductViewModel>();

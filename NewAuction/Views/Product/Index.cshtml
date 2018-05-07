@@ -26,11 +26,11 @@
     {
         <form method="post" style="text-align:center">
             <input placeholder="Make your bet" type="number" name="bet" />
-            <input type="number" name="productId" style="display:none" value="@Model.ID"/>
+            <input type="number" name="productId" style="display:none" value="@Model.ID" />
             <input type="submit" />
         </form>
     }
-    @if(DateTime.Now.CompareTo(Model.StartAuction.AddHours(1)) == 1)
+    @if (DateTime.Now.CompareTo(Model.StartAuction.AddHours(1)) == 1)
     {
         <p class="text-danger">Auction have already ended</p>
     }

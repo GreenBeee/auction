@@ -81,7 +81,6 @@ namespace NewAuction.Controllers
             newBet.TimeStamp = DateTime.Now.Millisecond;
             String id = User.Identity.GetUserId();
             newBet.User = applicationContext.Users.First(x => x.Id == id);
-            
             applicationContext.Bet.Add(newBet);
             applicationContext.SaveChanges();
             return View(product);
