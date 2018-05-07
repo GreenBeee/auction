@@ -19,9 +19,17 @@ namespace NewAuction.Controllers
                 if (DateTime.Now.CompareTo(current.StartAuction.AddHours(1)) == 1)
                 {
                     current.IsActive = false;
-                    Bet lastBetPerProduct = current.Bet.Last();
-                    if (lastBetPerProduct != null) {
-                        current.Buyer = lastBetPerProduct.User;
+                    if (current.Bet.Count == 0)
+                    {
+                        current.Buyer = null;
+                    }
+                    else
+                    {
+                        Bet lastBetPerProduct = current.Bet.Last();
+                        if (lastBetPerProduct != null)
+                        {
+                            current.Buyer = lastBetPerProduct.User.Id;
+                        }
                     }
                 }
                 if (current.IsActive && current.Buyer == null)

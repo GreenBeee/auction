@@ -40,7 +40,7 @@ namespace NewAuction.Controllers
                 Bet lastBetPerProduct = currentProduct.Bet.Last(x => x.Product.ID == currentProduct.ID);
                 if (lastBetPerProduct != null)
                 {
-                    currentProduct.Buyer = lastBetPerProduct.User;
+                    currentProduct.Buyer = lastBetPerProduct.User.Id;
                 }
                 applicationContext.SaveChanges();
             }
@@ -69,7 +69,7 @@ namespace NewAuction.Controllers
                 Bet lastBetPerProduct = product.Bet.Last(x => x.Product.ID == product.ID);
                 if (lastBetPerProduct != null)
                 {
-                    product.Buyer = lastBetPerProduct.User;
+                    product.Buyer = lastBetPerProduct.User.Id;
                 }
                 applicationContext.SaveChanges();
                 return View(product);
@@ -79,8 +79,9 @@ namespace NewAuction.Controllers
             newBet.Price = bet;
             newBet.Product = product;
             newBet.TimeStamp = DateTime.Now.Millisecond;
-            newBet.User = applicationContext.Users.First(x => x.UserName == HttpContext.User.Identity.Name);
-
+            String id = User.Identity.GetUserId();
+            newBet.User = applicationContext.Users.First(x => x.Id == id);
+            
             applicationContext.Bet.Add(newBet);
             applicationContext.SaveChanges();
             return View(product);
