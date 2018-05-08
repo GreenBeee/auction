@@ -29,12 +29,45 @@ namespace NewAuction.Controllers
                 _userManager = value;
             }
         }
-        
-        public ActionResult Index()
+
+        public ActionResult Index(string sortOrder, int id = -1)
         {
-            return View(UserManager.Users);
+            IQueryable<ApplicationUser> students = null;
+            var products = from s in db.Product where s.Buyer != null select s;
+            ViewBag.Auctions = products;
+            ViewBag.productId = id;
+            ViewBag.DateSortParam = sortOrder == "Address" ? "address_desc" : "Address";
+            if (id == -1)
+            {
+                students = from s in db.Users select s;
+            }
+            else
+            { 
+
+                var auction = products.Where(x => x.ID == id).First();
+                var usersInAuction = from s in db.Bet where s.Product.ID == auction.ID select s.User;
+
+
+                students = from s in db.Users
+                               where usersInAuction.Contains(s)
+                               select s;
+            }
+
+            switch (sortOrder)
+            {
+                case "Address":
+                    students = students.OrderBy(s => s.Address);
+                    break;
+                case "address_desc":
+                    students = students.OrderByDescending(s => s.Address);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.Email);
+                    break;
+            }
+            return View(students.ToList());
         }
-        
+
         public ActionResult Ban(string id)
         {
             ApplicationUser user = db.Users.Find(id);

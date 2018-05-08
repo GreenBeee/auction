@@ -31,6 +31,7 @@ namespace NewAuction.Controllers
                             current.Buyer = lastBetPerProduct.User.Id;
                         }
                     }
+                    continue;
                 }
                 if (current.IsActive && current.Buyer == null)
                 {

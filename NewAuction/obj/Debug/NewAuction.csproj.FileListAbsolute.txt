@@ -207,3 +207,4 @@ C:\Users\Bohdan\Source\Repos\auction2\NewAuction\obj\Debug\NewAuction.csproj.Gen
 C:\Users\Bohdan\Source\Repos\auction2\NewAuction\obj\Debug\NewAuction.csproj.CoreCompileInputs.cache
 C:\Users\Bohdan\Source\Repos\auction2\NewAuction\obj\Debug\NewAuction.dll
 C:\Users\Bohdan\Source\Repos\auction2\NewAuction\obj\Debug\NewAuction.pdb
+C:\Users\maryc_1mz6n6s\documents\visual studio 2017\Projects\NewAuction\NewAuction\obj\Debug\NewAuction.Migrations.AddressUser.resources
