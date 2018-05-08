@@ -108,13 +108,13 @@ namespace NewAuction.Controllers
         }
 
         // GET: MyProducts/Delete/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Product product = db.Product.Find(id);
             if (product == null)
             {
@@ -130,6 +130,11 @@ namespace NewAuction.Controllers
         {
             Product product = db.Product.Find(id);
             db.Product.Remove(product);
+
+            foreach (var i in db.Bet)
+                if (i.Product.ID == id)
+                    db.Bet.Remove(i);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }
