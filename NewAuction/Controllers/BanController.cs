@@ -30,30 +30,78 @@ namespace NewAuction.Controllers
             }
         }
 
-        // GET: MyProducts
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, int id = -1)
         {
-            return View(UserManager.Users);
+            IQueryable<ApplicationUser> students = null;
+            var products = from s in db.Product where s.Buyer != null select s;
+            ViewBag.Auctions = products;
+            ViewBag.productId = id;
+            ViewBag.DateSortParam = sortOrder == "Address" ? "address_desc" : "Address";
+            if (id == -1)
+            {
+                students = from s in db.Users select s;
+            }
+            else
+            { 
+
+                var auction = products.Where(x => x.ID == id).First();
+                var usersInAuction = from s in db.Bet where s.Product.ID == auction.ID select s.User;
+
+
+                students = from s in db.Users
+                               where usersInAuction.Contains(s)
+                               select s;
+            }
+
+            switch (sortOrder)
+            {
+                case "Address":
+                    students = students.OrderBy(s => s.Address);
+                    break;
+                case "address_desc":
+                    students = students.OrderByDescending(s => s.Address);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.Email);
+                    break;
+            }
+            return View(students.ToList());
         }
 
-        // GET: MyProducts/Delete/5
-        public ActionResult Delete(string id)
-        {  
+        public ActionResult Ban(string id)
+        {
             ApplicationUser user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
+            if (user.IsBanned == true)
+                return RedirectToAction("Index");
+
+            return View(user);
+        }
+       
+        [HttpPost, ActionName("Ban")]
+        [ValidateAntiForgeryToken]
+        public ActionResult BanConfirmed(string id)
+        {
+            ApplicationUser user = db.Users.Find(id);
+            user.IsBanned = true;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Disban(string id)
+        {
+            ApplicationUser user = db.Users.Find(id);
+            if (user.IsBanned == false)
+                return RedirectToAction("Index");
+
             return View(user);
         }
 
-        // POST: MyProducts/Delete/5       
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Disban")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DisbanConfirmed(string id)
         {
             ApplicationUser user = db.Users.Find(id);
-            db.Users.Remove(user);
+            user.IsBanned = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -76,8 +76,21 @@ namespace NewAuction.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            bool banned = false;
+            foreach (var i in db.Users)
+                if (i.Email == model.Email && i.IsBanned == true)
+                    banned = true;
+
+            if (banned == true)
             {
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+            }
+
+            switch (result)
+            {   
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -151,7 +164,7 @@ namespace NewAuction.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Address = model.Address };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

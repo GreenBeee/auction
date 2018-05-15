@@ -2,10 +2,31 @@
 
 @{
     ViewBag.Title = "Index";
+    var redirectURL = Url.Action("Index","Ban");
+
+    var sort = @ViewBag.DateSortParam;
+    string src = "";
+    if (sort == "" || sort == null)
+       src = redirectURL + "?id=" + @ViewBag.productId;
+    else
+        src = redirectURL + "?id=" + @ViewBag.productId + "&sortOrder=" + sort;
 }
 
-<h2>Index</h2>
+<h2>Users</h2>
 
+<select id="dropdown">
+    @foreach (var i in ViewBag.Auctions)
+    {
+        if (ViewBag.productId == i.ID)
+        {
+            <option value="@i.ID" selected>@i.Name (@i.User.UserName)</option>
+        }
+        else
+        {
+            <option value="@i.ID">@i.Name (@i.User.UserName)</option>
+        }
+    }
+</select>
 <table class="table">
     <tr>
         <th>
@@ -14,23 +35,52 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
+        <th>
+            <a href="@src" id="address">Address</a>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBanned)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsBanned)
+        </td>
 
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+        <td>
+            @Html.ActionLink("Ban", "Ban", new { id = item.Id })
+        </td>
+        <td>
+            @Html.ActionLink("Disban", "Disban", new { id = item.Id })
+        </td>
+
+
+    </tr>
     }
 
 </table>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    
+    $(function () {
+        $("#dropdown").change(function () {
+            var selectedItem = $("#dropdown option:selected").val();
+            var redirectURL = '@Url.Action("Index","Ban")';
+            window.location.href = redirectURL + "?id=" + selectedItem;
+        });
+    })
+</script>
