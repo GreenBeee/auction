@@ -1,11 +1,8 @@
 ﻿@model NewAuction.Models.Product
-
 @{
     ViewBag.Title = "Details";
 }
-
 <h2>Details</h2>
-
 <div>
     <h4>Product</h4>
     <hr />
@@ -13,59 +10,51 @@
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Image)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Image)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.StartPrice)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.StartPrice)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.SoldPrice)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.SoldPrice)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.IsActive)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.IsActive)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.StartAuction)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.StartAuction)
         </dd>
-
     </dl>
 </div>
 <p>

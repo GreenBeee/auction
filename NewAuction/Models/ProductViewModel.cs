@@ -11,6 +11,7 @@ namespace NewAuction.Models
         public String Name { get; set; }
         public String ImageUrl { get; set; }
         public String Description { get; set; }
+        public String Category { get; set; }
         public Double StartPrice { get; set; }
         public Double CurrentPrice { get; set; }
         public DateTime StartTime { get; set; }

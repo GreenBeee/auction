@@ -15,6 +15,7 @@ namespace NewAuction.Models
         public String Name { get; set; }
         public String Image { get; set; }
         public String Description { get; set; }
+        public String Category { get; set; }
         public Double StartPrice { get; set; }
         public Double SoldPrice { get; set; }
         public Boolean IsActive { get; set; }

@@ -1,13 +1,15 @@
 ﻿@model NewAuction.Models.Product
 @{
-    ViewBag.Title = "Index";
+                /**/
 
-    string str = "";
-    foreach(var bet in Model.Bet)
-    {
-        str += bet.User.Email.ToString() + " made a bet " + bet.Price;
-        str += "\n\r";
-    }
+                ViewBag.Title = "Index";
+
+                string str = "";
+                foreach (var bet in Model.Bet)
+                {
+                    str += bet.User.Email.ToString() + " made a bet " + bet.Price;
+                    str += "\n\r";
+                }
 }
 <head>
     <meta http-equiv="refresh" content="15">
@@ -17,8 +19,9 @@
     <h2>@Model.Name</h2>
     <h3 style="float:right">Ends in @Model.StartAuction.AddHours(1).ToShortTimeString()</h3>
     <p>@Model.Description</p>
+    <p>@Model.Category</p>
     <div class="col-sm-12" style="margin:0 auto; text-align:center">
-        <img style="height:300px" src ="@Model.Image" alt="no image" />
+        <img style="height:300px" src="@Model.Image" alt="no image" />
     </div>
     <h1 style="text-align:center">Current price: @Model.SoldPrice</h1>
     <p class="text-danger">@ViewBag.Error</p>
@@ -34,8 +37,7 @@
     {
         <p class="text-danger">Auction have already ended</p>
     }
-        <textarea style="width:100%; height:300px; max-width:100%" disabled>
+    <textarea style="width:100%; height:300px; max-width:100%" disabled>
             @str
         </textarea>
 </div>
-

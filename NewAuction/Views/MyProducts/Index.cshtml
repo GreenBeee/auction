@@ -1,11 +1,8 @@
 ﻿@model IEnumerable<NewAuction.Models.Product>
-
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>My products</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -21,6 +18,9 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.StartPrice)
         </th>
         <th>
@@ -34,42 +34,44 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            <img style="height:100px" src="@item.Image" alt="no-image" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoldPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartAuction)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-        @if (item.Buyer != null)
-        {
-            <td style="background-color:red">
-                Sold!
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
-        }
-    </tr>
-}
-
+            <td>
+                <img style="height:100px" src="@item.Image" alt="no-image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoldPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartAuction)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+            @if (item.Buyer != null)
+            {
+                <td style="background-color:red">
+                    Sold!
+                </td>
+            }
+        </tr>
+    }
 </table>

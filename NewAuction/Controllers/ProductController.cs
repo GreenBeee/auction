@@ -34,7 +34,7 @@ namespace NewAuction.Controllers
         public ActionResult Index(Int32 productId)
         {
             Product currentProduct = applicationContext.Product.First(x => x.ID == productId && x.IsActive == true);
-            if(DateTime.Now.CompareTo(currentProduct.StartAuction.AddHours(1)) == 1)
+            if (DateTime.Now.CompareTo(currentProduct.StartAuction.AddHours(1)) == 1)
             {
                 currentProduct.IsActive = false;
                 Bet lastBetPerProduct = currentProduct.Bet.Last(x => x.Product.ID == currentProduct.ID);
