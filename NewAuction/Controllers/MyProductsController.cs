@@ -129,12 +129,12 @@ namespace NewAuction.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Product.Find(id);
-            db.Product.Remove(product);
 
             foreach (var i in db.Bet)
                 if (i.Product.ID == id)
                     db.Bet.Remove(i);
 
+            db.Product.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
