@@ -33,7 +33,7 @@ namespace NewAuction.Controllers
         // GET: MyProducts
         public ActionResult Index()
         {
-            return View(UserManager.FindById(User.Identity.GetUserId()).Products);
+            return View(UserManager.FindById(User.Identity.GetUserId()).Products.OrderBy(s => s.Category));
         }
 
         // GET: MyProducts/Details/5
@@ -62,7 +62,7 @@ namespace NewAuction.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Image,Description,StartPrice,SoldPrice,IsActive,StartAuction")] Product product)
+        public ActionResult Create([Bind(Include = "ID,Name,Image,Description,Category,StartPrice,SoldPrice,IsActive,StartAuction")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace NewAuction.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Image,Description,StartPrice,SoldPrice,IsActive,StartAuction")] Product product)
+        public ActionResult Edit([Bind(Include = "ID,Name,Image,Description,Category,StartPrice,SoldPrice,IsActive,StartAuction")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -122,7 +122,7 @@ namespace NewAuction.Controllers
             }
             return View(product);
         }
-        
+
         // POST: MyProducts/Delete/5       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

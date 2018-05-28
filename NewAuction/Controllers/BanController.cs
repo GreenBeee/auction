@@ -68,20 +68,12 @@ namespace NewAuction.Controllers
             return View(students.ToList());
         }
 
-        public ActionResult Ban(string id)
+        public ActionResult BanUser(string id)
         {
             ApplicationUser user = db.Users.Find(id);
             if (user.IsBanned == true)
                 return RedirectToAction("Index");
 
-            return View(user);
-        }
-       
-        [HttpPost, ActionName("Ban")]
-        [ValidateAntiForgeryToken]
-        public ActionResult BanConfirmed(string id)
-        {
-            ApplicationUser user = db.Users.Find(id);
             user.IsBanned = true;
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -93,14 +85,6 @@ namespace NewAuction.Controllers
             if (user.IsBanned == false)
                 return RedirectToAction("Index");
 
-            return View(user);
-        }
-
-        [HttpPost, ActionName("Disban")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DisbanConfirmed(string id)
-        {
-            ApplicationUser user = db.Users.Find(id);
             user.IsBanned = false;
             db.SaveChanges();
             return RedirectToAction("Index");

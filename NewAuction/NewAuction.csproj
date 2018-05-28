@@ -227,9 +227,9 @@
     <Compile Include="Migrations\201805072210156_isBanedUser.Designer.cs">
       <DependentUpon>201805072210156_isBanedUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805080725215_AddressUser.cs" />
-    <Compile Include="Migrations\201805080725215_AddressUser.Designer.cs">
-      <DependentUpon>201805080725215_AddressUser.cs</DependentUpon>
+    <Compile Include="Migrations\201805281657468_add_category.cs" />
+    <Compile Include="Migrations\201805281657468_add_category.Designer.cs">
+      <DependentUpon>201805281657468_add_category.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -306,8 +306,6 @@
     <Content Include="Views\BoughtProducts\Details.cshtml" />
     <Content Include="Views\BoughtProducts\Index.cshtml" />
     <Content Include="Views\Ban\Index.cshtml" />
-    <Content Include="Views\Ban\Ban.cshtml" />
-    <Content Include="Views\Ban\Disban.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -349,8 +347,8 @@
     <EmbeddedResource Include="Migrations\201805072210156_isBanedUser.resx">
       <DependentUpon>201805072210156_isBanedUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805080725215_AddressUser.resx">
-      <DependentUpon>201805080725215_AddressUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805281657468_add_category.resx">
+      <DependentUpon>201805281657468_add_category.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
